@@ -31,7 +31,8 @@ class Milvus(VectorDB):
         self.db_config = db_config
         self.case_config = db_case_config
         self.collection_name = collection_name
-        self.batch_size = int(MILVUS_LOAD_REQS_SIZE / (dim * 4))
+        #self.batch_size = int(MILVUS_LOAD_REQS_SIZE / (dim * 4))
+        self.batch_size = 1 #remove batching for now
 
         self._primary_field = "pk"
         self._scalar_field = "id"
@@ -58,7 +59,7 @@ class Milvus(VectorDB):
             col = Collection(
                 name=self.collection_name,
                 schema=CollectionSchema(fields),
-                consistency_level="Session",
+                consistency_level="Strong",
             )
 
             col.create_index(

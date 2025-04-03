@@ -43,6 +43,7 @@ class DB(Enum):
     AliyunOpenSearch = "AliyunOpenSearch"
     MongoDB = "MongoDB"
     TiDB = "TiDB"
+    AstraDB = "AstraDB"
 
     @property
     def init_cls(self) -> type[VectorDB]:  # noqa: PLR0911, PLR0912, C901
@@ -151,6 +152,11 @@ class DB(Enum):
             from .test.test import Test
 
             return Test
+        
+        if self == DB.AstraDB:
+            from .astradb.astradb import AstraDB
+
+            return AstraDB
 
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
@@ -262,6 +268,11 @@ class DB(Enum):
             from .test.config import TestConfig
 
             return TestConfig
+        
+        if self == DB.AstraDB:
+            from .astradb.config import AstraDBConfig
+
+            return AstraDBConfig
 
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
@@ -350,7 +361,7 @@ class DB(Enum):
 
             return TiDBIndexConfig
 
-        # DB.Pinecone, DB.Chroma, DB.Redis
+        # DB.AstraDB, DB.Pinecone, DB.Chroma, DB.Redis
         return EmptyDBCaseConfig
 
 
