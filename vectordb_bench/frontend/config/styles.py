@@ -48,7 +48,8 @@ DB_TO_ICON = {
     DB.Chroma: "https://assets.zilliz.com/chroma_ceb3f06ed7.png",
     DB.AWSOpenSearch: "https://assets.zilliz.com/opensearch_1eee37584e.jpeg",
     DB.TiDB: "https://img2.pingcap.com/forms/3/d/3d7fd5f9767323d6f037795704211ac44b4923d6.png",
-    DB.AstraDB: "https://raw.githubusercontent.com/carbon-design-system/design-language-website/refs/heads/master/src/pages/ibm-logos/images/core_gray10_on_blue60.svg",
+    DB.AstraDB: "https://awesome-astra.github.io/docs/img/favicon.ico",
+    #"https://raw.githubusercontent.com/carbon-design-system/design-language-website/refs/heads/master/src/pages/ibm-logos/images/core_gray10_on_blue60.svg"
     #https://awesome-astra.github.io/docs/img/favicon.ico
     #https://cdn.sanity.io/images/bbnkhnhl/production/eedfd7562752ca78ce5d3ff9c57a3d8ef39f99b9-666x666.svg?fm=png&dl=datastax-icon-for-light-backgrounds.png
 }
