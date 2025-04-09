@@ -43,6 +43,7 @@ class DB(Enum):
     AliyunOpenSearch = "AliyunOpenSearch"
     MongoDB = "MongoDB"
     TiDB = "TiDB"
+    Clickhouse = "Clickhouse"
     AstraDB = "AstraDB"
 
     @property
@@ -117,6 +118,11 @@ class DB(Enum):
             from .aws_opensearch.aws_opensearch import AWSOpenSearch
 
             return AWSOpenSearch
+
+        if self == DB.Clickhouse:
+            from .clickhouse.clickhouse import Clickhouse
+
+            return Clickhouse
 
         if self == DB.AlloyDB:
             from .alloydb.alloydb import AlloyDB
@@ -234,6 +240,11 @@ class DB(Enum):
 
             return AWSOpenSearchConfig
 
+        if self == DB.Clickhouse:
+            from .clickhouse.config import ClickhouseConfig
+
+            return ClickhouseConfig
+
         if self == DB.AlloyDB:
             from .alloydb.config import AlloyDBConfig
 
@@ -320,6 +331,11 @@ class DB(Enum):
             from .aws_opensearch.config import AWSOpenSearchIndexConfig
 
             return AWSOpenSearchIndexConfig
+
+        if self == DB.Clickhouse:
+            from .clickhouse.config import ClickhouseHNSWConfig
+
+            return ClickhouseHNSWConfig
 
         if self == DB.PgVectorScale:
             from .pgvectorscale.config import _pgvectorscale_case_config
