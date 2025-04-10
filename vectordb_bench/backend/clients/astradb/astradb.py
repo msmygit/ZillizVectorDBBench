@@ -82,6 +82,7 @@ class AstraDB(VectorDB):
         self.session.execute(CREATE_TABLE_TEMPLATE%(collection_name, dim))
         self.session.execute(CREATE_INDEX_TEMPLATE%(collection_name, collection_name))
         self.session.shutdown()
+        self.cluster.shutdown()
 
     @classmethod
     def config_cls(cls) -> Type[DBConfig]:
@@ -114,6 +115,7 @@ class AstraDB(VectorDB):
         finally:
             log.info("shutting down")
             self.session.shutdown()
+            self.cluster.shutdown()
 
     def insert_embeddings(
         self,
