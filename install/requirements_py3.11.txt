@@ -23,4 +23,5 @@ pydantic<v2
 scikit-learn
 pymilvus
 clickhouse_connect
+pyvespa
 cassandra-driver>=3.29.2

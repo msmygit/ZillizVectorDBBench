@@ -44,6 +44,7 @@ class DB(Enum):
     MongoDB = "MongoDB"
     TiDB = "TiDB"
     Clickhouse = "Clickhouse"
+    Vespa = "Vespa"
     AstraDB = "AstraDB"
 
     @property
@@ -163,6 +164,11 @@ class DB(Enum):
             from .astradb.astradb import AstraDB
 
             return AstraDB
+
+        if self == DB.Vespa:
+            from .vespa.vespa import Vespa
+
+            return Vespa
 
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
@@ -285,10 +291,15 @@ class DB(Enum):
 
             return AstraDBConfig
 
+        if self == DB.Vespa:
+            from .vespa.config import VespaConfig
+
+            return VespaConfig
+
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
 
-    def case_config_cls(  # noqa: PLR0911
+    def case_config_cls(  # noqa: C901, PLR0911, PLR0912
         self,
         index_type: IndexType | None = None,
     ) -> type[DBCaseConfig]:
@@ -376,6 +387,11 @@ class DB(Enum):
             from .tidb.config import TiDBIndexConfig
 
             return TiDBIndexConfig
+
+        if self == DB.Vespa:
+            from .vespa.config import VespaHNSWConfig
+
+            return VespaHNSWConfig
 
         # DB.AstraDB, DB.Pinecone, DB.Chroma, DB.Redis
         return EmptyDBCaseConfig

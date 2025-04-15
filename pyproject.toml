@@ -71,6 +71,7 @@ all = [
     "mariadb",
     "PyMySQL",
     "clickhouse-connect",
+    "pyvespa",
     "cassandra-driver>=3.29.2",
 ]
 
@@ -92,11 +93,9 @@ aliyun_opensearch = [ "alibabacloud_ha3engine_vector", "alibabacloud_searchengin
 mongodb         = [ "pymongo" ]
 mariadb         = [ "mariadb" ]
 tidb            = [ "PyMySQL" ]
-<<<<<<< HEAD
-astradb         = [ "cassandra-driver>=3.29.2" ]
-=======
 clickhouse      = [ "clickhouse-connect" ]
->>>>>>> origin/astradb
+vespa           = [ "pyvespa" ]
+astradb         = [ "cassandra-driver>=3.29.2" ]
 
 [project.urls]
 "repository" = "https://github.com/zilliztech/VectorDBBench"
